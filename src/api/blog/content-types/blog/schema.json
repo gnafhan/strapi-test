@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blog_name": {
+      "type": "string",
+      "maxLength": 200,
+      "required": true,
+      "minLength": 3,
+      "unique": false
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "username": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "blogs"
+    }
+  }
+}
